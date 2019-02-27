@@ -2,6 +2,7 @@ const path = require('path')
 const express = require('express')
 const exphbs = require('express-handlebars')
 // const logger = require('./middleware/logger')
+const members = require('./Members')
 
 const PORT = process.env.PORT || 5000
 
@@ -18,7 +19,12 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 // Render Handlebars view
-app.get('/', (req, res) => res.render('index'))
+app.get('/', (req, res) => {
+  res.render('index', {
+    title: 'Members',
+    members
+  })
+})
 
 // Set `public/` as static folder
 app.use(express.static(path.join(__dirname, 'public')))
