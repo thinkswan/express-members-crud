@@ -38,7 +38,9 @@ router.post('/', (req, res) => {
     status: 'active'
   })
 
-  return res.json(members)
+  // return res.json(members)
+
+  res.redirect('/')
 })
 
 // Update member
