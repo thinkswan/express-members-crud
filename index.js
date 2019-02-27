@@ -1,5 +1,6 @@
 const path = require('path')
 const express = require('express')
+const moment = require('moment')
 const members = require('./Members')
 
 const PORT = process.env.PORT || 5000
@@ -7,7 +8,11 @@ const PORT = process.env.PORT || 5000
 const app = express()
 
 const logger = (req, res, next) => {
-  console.log(`${req.protocol}://${req.get('host')}${req.originalUrl}`)
+  console.log(
+    `${moment().format()} ${req.protocol}://${req.get('host')}${
+      req.originalUrl
+    }`
+  )
   next()
 }
 
