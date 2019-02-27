@@ -1,3 +1,4 @@
+const path = require('path')
 const express = require('express')
 
 const PORT = process.env.PORT || 5000
@@ -5,7 +6,7 @@ const PORT = process.env.PORT || 5000
 const app = express()
 
 app.get('/', (req, res) => {
-  res.send('<h1>Hello world</h1>')
+  res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`))
